@@ -1,0 +1,20 @@
+name: milenio-capital-challenge
+version: 0.1.0
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  jennifer: 
+    github: imdrasil/jennifer.cr
+    version: "~> 0.7.0"
+
+authors:
+  - jnovais1 <jnovais@findes.org.br>
+
+targets:
+  api:
+    main: src/api.cr
+
+crystal: 1.8.2
+
+license: MIT
