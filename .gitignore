@@ -3,4 +3,8 @@
 /bin/
 /.shards/
 *.dwarf
-/shard.lock
+start_server
+*.dwarf
+*.local.cr
+.env
+/tmp
