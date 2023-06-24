@@ -1,20 +1,33 @@
-name: milenio-capital-challenge
+name: multiverse_travels_booker
 version: 0.1.0
-
-dependencies:
-  kemal:
-    github: kemalcr/kemal
-  jennifer: 
-    github: imdrasil/jennifer.cr
-    version: "~> 0.7.0"
 
 authors:
   - jnovais1 <jnovais@findes.org.br>
 
 targets:
-  api:
-    main: src/api.cr
+  app:
+    main: src/multiverse_travels_booker.cr
 
 crystal: 1.8.2
+
+dependencies:
+  lucky:
+    github: luckyframework/lucky
+    version: ~> 1.0.0
+  avram:
+    github: luckyframework/avram
+    version: ~> 1.0.0
+  carbon:
+    github: luckyframework/carbon
+    version: ~> 0.3.0
+  carbon_sendgrid_adapter:
+    github: luckyframework/carbon_sendgrid_adapter
+    version: ~> 0.3.0
+  lucky_env:
+    github: luckyframework/lucky_env
+    version: ~> 0.1.4
+  lucky_task:
+    github: luckyframework/lucky_task
+    version: ~> 0.1.1
 
 license: MIT
