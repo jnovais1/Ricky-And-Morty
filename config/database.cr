@@ -1,7 +1,11 @@
 database_name = "multiverse_travels_booker"
 
 AppDatabase.configure do |settings|
+  if LuckyEnv.production?
+    settings.credentials = Avram::Credentials.parse(ENV["DATABASE_URL_PROD"])
+  else
     settings.credentials = Avram::Credentials.parse(ENV["DATABASE_URL_ENV"]) 
+  end
 end
 
 Avram.configure do |settings|
