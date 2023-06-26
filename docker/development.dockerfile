@@ -19,7 +19,9 @@ RUN git clone https://github.com/luckyframework/lucky_cli . && \
     cp bin/lucky /usr/bin
 
 WORKDIR /app
-ENV DATABASE_URL=postgres://postgres:postgres@host.docker.internal:5432/postgres
-EXPOSE 3000
-EXPOSE 3001
+COPY . /app
 
+# Set the environment variable for the DATABASE_URL
+ENV DATABASE_URL="postgresql://postgres:postgres@host.docker.internal:5432/postgres"
+
+CMD ["lucky", "db.setup"]

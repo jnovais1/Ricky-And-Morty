@@ -1,8 +1,43 @@
-version: '3'
+version: '3.8'
 services:
   api:
+    image: lucky_docker
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/development.dockerfile
+    environment:
+      DATABASE_URL: postgresql://jnovais1:123456@postgres:5432/multiverse_travels_booker
+      DEV_HOST: "0.0.0.0"
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        source: node_modules
+        target: /app/node_modules
+      - type: volume
+        source: shards_lib
+        target: /app/lib
     ports:
-      - "3000:3000"
+      - 3000:3000 # This is the Lucky Server port
+      - 3001:3001 # This is the Lucky watcher reload port]
+    entrypoint: ["docker/dev_entrypoint.sh"]
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  postgres:
+    image: postgres:14.8-alpine
+    expose:
+      - 5432
+    environment:
+        POSTGRES_USER: 'jnovais1' 
+        POSTGRES_PASSWORD: '123456'
+        POSTGRES_DB: 'multiverse_travels_booker'
+    volumes:
+      - pgdata:/var/lib/postgresql/data     
+volumes:
+  pgdata:
+  node_modules:
+  shards_lib:
